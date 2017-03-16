@@ -4,7 +4,7 @@ var fs = require('fs');
 var server = http.createServer(function (req, res) {
   getTitles(res);
 }).listen(8000, "127.0.0.1");
-
+console.log('Server running at http://localhost:8000/');
 function getTitles(res) {
   fs.readFile('./titles.json', function (err, data) {
     if (err) return hadError(err, res);
