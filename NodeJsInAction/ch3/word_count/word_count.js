@@ -7,8 +7,8 @@ var filesDir = './text';
 function checkIfComplete() {
   completedTasks++;
   if (completedTasks == tasks.length) {
-    for(var index in wordCounts) { 
-      console.log(index +': ' + wordCounts[index]);
+    for (var index in wordCounts) {
+      console.log(index + ': ' + wordCounts[index]);
     }
   }
 }
@@ -19,7 +19,7 @@ function countWordsInText(text) {
     .toLowerCase()
     .split(/\W+/)
     .sort();
-  for(var index in words) { 
+  for (var index in words) {
     var word = words[index];
     if (word) {
       wordCounts[word] = (wordCounts[word]) ? wordCounts[word] + 1 : 1;
@@ -27,21 +27,25 @@ function countWordsInText(text) {
   }
 }
 
-fs.readdir(filesDir, function(err, files) { 
+fs.readdir(filesDir, function (err, files) {
   if (err) throw err;
-  for(var index in files) {
-    var task = (function(file) { 
-      return function() {
-        fs.readFile(file, function(err, text) {
+  for (var index in files) {
+    // 自执行匿名函数（self-executing anonymous function）
+    // (function( window, undefined ) {
+    // // code
+    // })(window); 
+    var task = (function (file) {
+      return function () {
+        fs.readFile(file, function (err, text) {
           if (err) throw err;
           countWordsInText(text);
           checkIfComplete();
         });
       }
     })(filesDir + '/' + files[index]);
-    tasks.push(task); 
+    tasks.push(task);
   }
-  for(var task in tasks) { 
+  for (var task in tasks) {
     tasks[task]();
   }
 });
