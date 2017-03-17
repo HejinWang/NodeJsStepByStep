@@ -1,3 +1,4 @@
+//串行化流程控制
 var flow = require('nimble');
 
 flow.series([

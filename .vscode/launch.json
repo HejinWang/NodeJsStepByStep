@@ -9,9 +9,9 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch3/pubsub.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch3/serial_control_with_tool.js",
             "cwd": "${workspaceRoot}"
-        },
+        }, 
         {
             // "type": "node",
             // "request": "attach",
