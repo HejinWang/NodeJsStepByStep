@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch3/serial_control_with_tool.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch4/post_request_body_string_buffering.js",
             "cwd": "${workspaceRoot}"
         }, 
         {
