@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch4/post_request_body_string_buffering.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch4/readstream_static.js",
             "cwd": "${workspaceRoot}"
         }, 
         {
