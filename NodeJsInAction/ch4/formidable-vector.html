@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/socket.io.js"></script>
+    <script src="js/ht.js"></script>
+    <script>
+        /***
+         * 绘制圆边矩形
+         * @param ctx 画笔
+         * @param x 坐标 x
+         * @param y 坐标 y
+         * @param width 宽度
+         * @param height 高度
+         * @param radius 圆角半径
+         */
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x, y + radius);
+            ctx.lineTo(x, y + height - radius);
+            ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+            ctx.lineTo(x + width - radius, y + height);
+            ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+            ctx.lineTo(x + width, y + radius);
+            ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+            ctx.lineTo(x + radius, y);
+            ctx.quadraticCurveTo(x, y, x, y + radius);
+        }
+
+        ht.Default.setImage('progress', {
+            width: 150,
+            height: 12,
+            comps: [
+                // 绘制文本
+                {
+                    rect: { x: 118, y: 0, width: 32, height: 12 },
+                    type: 'text',
+                    text: { func: function (data) { return data.getValue() + '%'; } },
+                    font: '12px arial, sans-ferif',
+                    color: 'black'
+                },
+                // 绘制圆角矩形
+                {
+                    rect: { x: 0, y: 0, width: 115, height: 12 },
+                    type: function (g, rect, comp, data, view) {
+                        var width = rect.width, height = rect.height;
+                        roundRect(g, 0, 0, width, height, height / 2);
+                        g.clip();
+                    }
+                },
+                // 绘制背景
+                {
+                    type: 'rect',
+                    rect: { x: 0, y: 0, width: 115, height: 12 },
+                    background: { func: function (data) { return data.a('background'); } }
+                },
+                // 绘制前景
+                {
+                    rect: { x: 0, y: 0, width: 115, height: 12 },
+                    type: function (g, rect, comp, data, view) {
+                        var width = rect.width, height = rect.height, value = data.getValue(),
+                            foreWidth = width / 100 * value;
+                        g.fillStyle = data.a('foreground');
+                        g.fillRect(0, 0, foreWidth, height);
+                    }
+                }
+            ]
+        });
+
+        function init() {
+            var dataModel = new ht.DataModel(),
+                node = new ht.Node();
+            node.getValue = function () {
+                return this._value;
+            };
+            node.setValue = function (value) {
+                var self = this,
+                    oV = self._value;
+                self._value = value;
+                self.fp('value', oV, value);
+            };
+            node.setValue(0);
+            node.setImage('progress');
+            node.a('background', '#5F6870');
+            node.a('foreground', '#58B6DA');
+            // 设置node不可选中。
+            node.s('2d.selectable', false);
+            node.p(85, 10);
+            dataModel.add(node);
+
+            var graphView = new ht.graph.GraphView(dataModel);
+            // 重载graphView的adjustTranslateX及adjustTranslateY方法，将graphView不可滚动
+            graphView.adjustTranslateX = function () {
+                return 0;
+            };
+            graphView.adjustTranslateY = function () {
+                return 0;
+            };
+            // 重载graphView的adjustZoom方法，限制graphView的缩放
+            graphView.adjustZoom = function () {
+                return 1;
+            };
+            graphView.addToDOM();
+            graphView.layout({ x: 0, y: 80, width: 170, height: 30 });
+
+            var form = document.forms.namedItem('fileForm');
+            form.addEventListener('submit', function (e) {
+                // 创建socket对象
+                var socket = io();
+
+                var httpRequest;
+                if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
+                    httpRequest = new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject) { // IE 6 and older
+                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                httpRequest.open('POST', '/', true);
+                httpRequest.send(new FormData(form));
+
+                socket.on('progress', function (val) {
+                    node.setValue(val);
+                });
+                e.preventDefault();
+            }, false);
+        }
+    </script>
+</head>
+
+<body onload="init();">
+    <form method="post" action="/" enctype="multipart/form-data" name="fileForm">
+        <p><input type="file" name="file" /></p>
+
+        <p><input type="submit" value="Upload" /></p>
+    </form>
+</body>
+
+</html>
