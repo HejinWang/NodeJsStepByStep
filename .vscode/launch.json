@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch4/https.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch5/timetrack/timetrack_server.js",
             "cwd": "${workspaceRoot}"
         }, 
         {
