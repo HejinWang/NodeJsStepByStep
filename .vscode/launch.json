@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch4/formidable-server.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch4/https.js",
             "cwd": "${workspaceRoot}"
         }, 
         {
