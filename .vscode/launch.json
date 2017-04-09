@@ -4,14 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch5/pb_server.js",
+            "program": "${workspaceRoot}/NodeJsInAction/ch5/mongoose.js",
             "cwd": "${workspaceRoot}"
-        }, 
+        },
         {
             // "type": "node",
             // "request": "attach",
