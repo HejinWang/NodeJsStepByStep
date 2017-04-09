@@ -1,6 +1,6 @@
-<script src='../../../dist/js/jquery-3.2.0.js'></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery-json/2.6.0/jquery.json.min.js"></script>
-<script src='../../../dist/js/date.js'></script>
+<script src="https://cdn.bootcss.com/datejs/1.0/date.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
 $(document).ready(function(){
@@ -25,7 +25,7 @@ $(document).ready(function(){
 	});
 
 	function join(name) {
-		var host = window.location.host.split(':')[0];
+		var host = window.location.host;
 		var socket = io.connect('http://' + host);
 		
 		// send join message
@@ -185,15 +185,15 @@ $(document).ready(function(){
     font-size: 30pt;
   }
 </style>
-</head>
+
 <body>
-  <div id="ask" class="bordered" style="display: none;">
-    Name: <input type="text" id="name" /> <a href="#"><span class="join">Join!</span></a>
+  <div class="bordered" id="ask" style="display: none;">
+    Name: <input id="name" type="text"> <a href="#"><span class="join">Join!</span></a>
   </div>
-  <div id="channel" class="bordered" style="display: none;">
-    <div id="descr" class="bordered">
+  <div class="bordered" id="channel" style="display: none;">
+    <div class="bordered" id="descr">
       <strong>Note:</strong> your messages make a round-trip up and down the stack (including Redis)
-      before being displayed here.<br/>
+      before being displayed here.<br>
       <strong>Tip:</strong> open up another browser window
       to see how quickly your messages are distributed.
     </div>
@@ -210,8 +210,7 @@ $(document).ready(function(){
       </ul>
     </div>
     <div id="input">
-      <form><input type="text" id="message" /></form>
+      <form><input id="message" type="text"></form>
     </div>
   </div>
 </body>
-</html>

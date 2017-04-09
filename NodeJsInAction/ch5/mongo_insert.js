@@ -1,4 +1,5 @@
 var mongodb = require('mongodb');
+var ObjectID = require('mongodb').ObjectID;
 var server = new mongodb.Server('127.0.0.1', 27017, {});
 var client = new mongodb.Db('mydatabase', server, {w: 1});
 
@@ -15,7 +16,7 @@ client.open(function(err) {
       {safe: true},
       function(err, documents) {
         if (err) throw err;
-        console.log('Document ID is: ' + documents[0]._id);
+        console.log('Document ID is: ' + documents.ops[0]._id);
       }
     );
   });

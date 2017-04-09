@@ -1,0 +1,25 @@
+extends layout
+
+
+block scripts
+  // 引用 node_modules 的文件???
+  script(src='/socket.io/socket.io.js', type='text/javascript')    
+  //. 不能少
+  script(type='text/javascript').
+      var socket = io.connect('http://localhost:3000');
+      socket.on('chat', function(data) {
+        document.getElementById('chat').innerHTML = 
+          '<p><b>' + data.title + '</b>: ' + data.contents + '</p>' ;
+      });
+      var submitChat = function(form) {
+        socket.emit('chat', {text: form.chat.value});
+        return false;
+      };
+
+
+block content
+  div#chat
+  
+  form(onsubmit='return submitChat(this);')
+    input#chat(name='chat', type='text')
+    input(type='submit', value='Send Chat')
