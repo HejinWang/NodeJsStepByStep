@@ -1,0 +1,9 @@
+{
+    "name": "redis_pubsub",
+    "version": "0.0.1",
+    "description": "redis_pubsub",
+    "dependencies": { 
+        "socket.io": "1.7.3", 
+        "redis": "2.7.0"
+    }
+}
