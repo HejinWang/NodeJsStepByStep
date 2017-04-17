@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/NodeJsInAction/ch5/mongoose.js",
+            "program": "${workspaceRoot}/demo/file_post2.js",
             "cwd": "${workspaceRoot}"
         },
         {
