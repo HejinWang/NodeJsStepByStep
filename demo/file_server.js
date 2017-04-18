@@ -7,9 +7,8 @@ var express = require('express'),
     formidable = require('formidable');
 
 
-//静态资源服务
-//app.use(express.static(path.join(__dirname, 'public'))); 
-app.use('/file', express.static(path.join(__dirname, 'uploads')));
+//静态资源服务 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //跨域资源请求
 app.use(cors());
 
@@ -20,7 +19,7 @@ app.post('/uploads', function (req, res) {
         res.end('Bad Request: expecting multipart/form-data');
         return;
     }
-
+    var fileInfo = {};
     var form = new formidable.IncomingForm();
     //设置表单域的编码
     form.encoding = 'utf-8';
@@ -38,26 +37,34 @@ app.post('/uploads', function (req, res) {
     //form.multiples = false;
 
 
-
+    /*
     form.on('field', function (field, value) {
-        console.log(field); console.log(value);
+        console.log(field); 
+        console.log(value);
     });
     form.on('file', function (name, file) {
         console.log(name);
         console.log(file);
     });
-    form.on('end', function () {
-        res.end('upload complete!');
-    });
+    
+    */
     form.on('progress', function (bytesReceived, bytesExpected) {
         var percent = Math.floor(bytesReceived / bytesExpected * 100);
         console.log(percent);
     });
 
     form.parse(req, function (err, fields, files) {
-        console.log(fields);
+        //console.log(fields);
+        //res.end('upload complete!');
         console.log(files);
-        res.end('upload complete!');
+        fileInfo = files;
+
+    });
+
+    form.on('end', function () {
+        console.log('upload complete!')
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(fileInfo));
     });
 });
 function isFormData(req) {
