@@ -1,4 +1,5 @@
-[{
+module.exports = [
+    {
         "CMYK": [
             0,
             0,
@@ -124,7 +125,7 @@
         ],
         "hex": "#4e5f45",
         "name": "苍绿",
-        "pinyin": "canglyu"
+        "pinyin": "canglv"
     },
     {
         "CMYK": [
@@ -220,7 +221,7 @@
         ],
         "hex": "#e3efd1",
         "name": "春绿",
-        "pinyin": "chunlyu"
+        "pinyin": "chunlv"
     },
     {
         "CMYK": [
@@ -236,7 +237,7 @@
         ],
         "hex": "#006e5f",
         "name": "翠绿",
-        "pinyin": "cuilyu"
+        "pinyin": "cuilv"
     },
     {
         "CMYK": [
@@ -316,7 +317,7 @@
         ],
         "hex": "#aec4b7",
         "name": "淡灰绿",
-        "pinyin": "danhuilyu"
+        "pinyin": "danhuilv"
     },
     {
         "CMYK": [
@@ -412,7 +413,7 @@
         ],
         "hex": "#6a6834",
         "name": "橄榄绿",
-        "pinyin": "ganlanlyu"
+        "pinyin": "ganlanlv"
     },
     {
         "CMYK": [
@@ -572,7 +573,7 @@
         ],
         "hex": "#5c8987",
         "name": "灰绿",
-        "pinyin": "huilyu"
+        "pinyin": "huilv"
     },
     {
         "CMYK": [
@@ -700,7 +701,7 @@
         ],
         "hex": "#cad4ba",
         "name": "军绿",
-        "pinyin": "junlyu"
+        "pinyin": "junlv"
     },
     {
         "CMYK": [
@@ -748,7 +749,7 @@
         ],
         "hex": "#b7b278",
         "name": "枯绿",
-        "pinyin": "kulyu"
+        "pinyin": "kulv"
     },
     {
         "CMYK": [
@@ -780,7 +781,7 @@
         ],
         "hex": "#3d6e53",
         "name": "老绿",
-        "pinyin": "laolyu"
+        "pinyin": "laolv"
     },
     {
         "CMYK": [
@@ -908,7 +909,7 @@
         ],
         "hex": "#afc8ba",
         "name": "奶绿",
-        "pinyin": "nailyu"
+        "pinyin": "nailv"
     },
     {
         "CMYK": [
@@ -1132,7 +1133,7 @@
         ],
         "hex": "#647370",
         "name": "卡其绿",
-        "pinyin": "kaqilyu"
+        "pinyin": "kaqilv"
     },
     {
         "CMYK": [
@@ -1196,7 +1197,7 @@
         ],
         "hex": "#90caaf",
         "name": "三绿",
-        "pinyin": "sanlyu"
+        "pinyin": "sanlv"
     },
     {
         "CMYK": [
@@ -1212,7 +1213,7 @@
         ],
         "hex": "#005b5a",
         "name": "沙绿",
-        "pinyin": "shalyu"
+        "pinyin": "shalv"
     },
     {
         "CMYK": [
@@ -1500,7 +1501,7 @@
         ],
         "hex": "#b8c8b7",
         "name": "锈绿",
-        "pinyin": "xiulyu"
+        "pinyin": "xiulv"
     },
     {
         "CMYK": [
@@ -1628,7 +1629,7 @@
         ],
         "hex": "#008e59",
         "name": "鹦鹉绿",
-        "pinyin": "yingwulyu"
+        "pinyin": "yingwulv"
     },
     {
         "CMYK": [
@@ -1660,7 +1661,7 @@
         ],
         "hex": "#45554a",
         "name": "油绿",
-        "pinyin": "youlyu"
+        "pinyin": "youlv"
     },
     {
         "CMYK": [
@@ -1950,4 +1951,4 @@
         "name": "棕茶",
         "pinyin": "zongcha"
     }
-]
+];

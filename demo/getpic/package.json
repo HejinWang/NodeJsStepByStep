@@ -1,0 +1,8 @@
+{
+    "name": "getPic",
+    "version": "0.0.1",
+    "description": "抓取页面文件  文件存在 PASS",
+    "dependencies": { 
+        
+    }
+}
